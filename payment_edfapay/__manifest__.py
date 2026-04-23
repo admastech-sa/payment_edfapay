@@ -24,6 +24,7 @@ payments through the standard Odoo payment flow and website checkout.
     ],
     'images': [
         'static/description/main_screenshot.png',
+        'static/description/banner.png',
     ],
     'license': 'LGPL-3',
     'price': 350.0,
