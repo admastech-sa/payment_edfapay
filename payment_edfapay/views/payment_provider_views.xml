@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Payment Provider Form View -->
+        <record id="payment_provider_form_edfapay" model="ir.ui.view">
+            <field name="name">payment.provider.form.edfapay</field>
+            <field name="model">payment.provider</field>
+            <field name="inherit_id" ref="payment.payment_provider_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='provider_credentials']" position="inside">
+                    <group invisible="code != 'edfapay'" colspan="2">
+                        <group>
+                            <field name="edfapay_merchant_key" password="True"/>
+                        </group>
+                        <group>
+                            <field name="edfapay_password" password="True"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

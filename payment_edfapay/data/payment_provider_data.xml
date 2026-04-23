@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Payment Method: EdfaPay Card -->
+        <record id="payment_method_edfapay_card" model="payment.method">
+            <field name="sequence">1000</field>
+            <field name="name">Credit/Debit Card</field>
+            <field name="code">card</field>
+            <!-- keep it False, it will be used through the provider -->
+            <field name="active">False</field>
+            <field name="support_tokenization">False</field>
+            <field name="support_express_checkout">False</field>
+        </record>
+
+        <!-- Payment Provider: EdfaPay -->
+        <record id="payment_provider_edfapay" model="payment.provider">
+            <field name="name">EdfaPay</field>
+            <field name="image_128" type="base64"
+                   file="payment_edfapay/static/description/icon.png"/>
+            <field name="code">edfapay</field>
+            <field name="company_id" ref="base.main_company"/>
+
+            <!-- Redirect form view (must include module name) -->
+            <field name="redirect_form_view_id"
+                   ref="payment_edfapay.edfapay_redirect_form"/>
+
+            <!-- Provider state: make it usable out of the box -->
+            <field name="state">test</field>
+
+            <!-- Message shown before redirect -->
+            <field name="pre_msg"><![CDATA[
+<p>You will be redirected to EdfaPay secure payment page to complete your payment.</p>]]></field>
+
+            <!-- Credentials placeholders (configure real ones in backend) -->
+            <field name="edfapay_merchant_key">AAAAAAAAA</field>
+            <field name="edfapay_password">AAAAAAAA</field>
+
+            <!-- Capabilities -->
+            <field name="support_refund">partial</field>
+            <field name="support_tokenization">False</field>
+
+            <!-- Link to this module -->
+            <field name="module_id" ref="base.module_payment_edfapay"/>
+
+            <!-- Supported currencies -->
+            <field name="available_currency_ids"
+                   eval="[(6, 0, [
+                        ref('base.SAR'),
+                        ref('base.AED'),
+                        ref('base.USD'),
+                        ref('base.EUR'),
+                        ref('base.GBP'),
+                   ])]"
+            />
+
+            <!-- Payment methods supported by this provider -->
+            <field name="payment_method_ids"
+                   eval="[(6, 0, [ref('payment_edfapay.payment_method_edfapay_card')])]"/>
+        </record>
+
+    </data>
+</odoo>

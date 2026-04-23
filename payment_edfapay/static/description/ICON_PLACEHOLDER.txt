@@ -1,0 +1,15 @@
+Icon Placeholder
+
+Please replace this file with your actual EdfaPay logo.
+
+Requirements:
+- Format: PNG
+- Size: 128x128 pixels
+- Name: icon.png
+
+The icon will be displayed in:
+- Odoo Apps menu
+- Payment provider selection
+- Module listing
+
+You can use the EdfaPay brand guidelines to create an appropriate icon.

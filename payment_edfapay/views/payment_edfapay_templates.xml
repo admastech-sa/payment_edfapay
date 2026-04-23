@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Redirect Template used by payment.provider.redirect_form_view_id -->
+        <template id="edfapay_redirect_form" name="EdfaPay Redirect Form">
+            <!-- Odoo will render this with api_url coming from _get_specific_rendering_values -->
+            <form t-att-action="api_url" method="get">
+                <div class="text-center">
+                    <h3>Redirecting to EdfaPay Payment Gateway...</h3>
+                    <p>Please wait while we redirect you to complete your payment.</p>
+                    <p>If you are not redirected automatically, click the button below.</p>
+                    <button type="submit" class="btn btn-primary">
+                        Proceed to EdfaPay
+                    </button>
+                </div>
+            </form>
+        </template>
+    </data>
+</odoo>
